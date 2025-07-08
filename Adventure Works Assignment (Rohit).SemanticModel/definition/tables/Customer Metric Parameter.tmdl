@@ -1,0 +1,49 @@
+table 'Customer Metric Parameter'
+	lineageTag: e0063cdf-1d18-4951-bf5a-c2e92c45237a
+
+	column 'Customer Metric'
+		lineageTag: d7b01e75-8792-4bc0-866a-9a6138042ef1
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Customer Metric Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Customer Metric Parameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Metric Parameter Fields'
+		isHidden
+		lineageTag: 5db1448c-13b1-4e10-9a0d-6a7b2f07849a
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Customer Metric Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Customer Metric Parameter Order'
+		isHidden
+		formatString: 0
+		lineageTag: 8318155d-717a-4b7b-8dd0-5af63dd1a4e6
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Customer Metric Parameter' = calculated
+		mode: import
+		source =
+				{
+				    ("Total_Orders", NAMEOF('*Measure table'[Total_Orders]), 0),
+				    ("Total_Profit", NAMEOF('*Measure table'[Total_Profit]), 1),
+				    ("Total_Revenue", NAMEOF('*Measure table'[Total_Revenue]), 2)
+				}
+
+	annotation PBI_Id = afe0e83ae24140cd97c45b0c89714272
+

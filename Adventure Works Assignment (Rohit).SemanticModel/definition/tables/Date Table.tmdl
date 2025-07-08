@@ -1,0 +1,114 @@
+table 'Date Table'
+	lineageTag: 2dae3eec-aeb7-468e-9af5-3cbe9566cb8f
+
+	column 'Order Date'
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: b7dca869-29f2-43b5-a183-049d7b152526
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Order Date]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column Year = YEAR('Date Table'[Order Date])
+		dataType: int64
+		formatString: 0
+		lineageTag: e06ee8b5-af2a-4ba0-9d1b-526ba42063c9
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month = FORMAT('Date Table'[Order Date], "mm")
+		dataType: int64
+		formatString: 0
+		lineageTag: c213772a-b965-453c-b563-ff37a8daf552
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Day = FORMAT('Date Table'[Order Date],"dd")
+		dataType: int64
+		formatString: 0
+		lineageTag: 42628f25-4fbc-4b23-81ef-75f5946f136b
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day Name' = FORMAT('Date Table'[Order Date],"ddd")
+		lineageTag: acbefe59-b0d2-4deb-a205-153684d7db5c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter = QUARTER('Date Table'[Order Date])
+		formatString: 0
+		lineageTag: ecf43ede-7aef-48ab-9749-4a2c351fba6c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start of month' = STARTOFMONTH('Date Table'[Order Date])
+		formatString: yyyy-mm-dd
+		lineageTag: 215dd93d-8448-47e3-b6c5-dd0da4662b9c
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column Date_in_text = FORMAT('Date Table'[Order Date],"yyyymmdd")
+		lineageTag: e9716fe9-a619-475d-a468-9cca2b70d271
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Start of year' = STARTOFYEAR('Date Table'[Order Date])
+		formatString: yyyy
+		lineageTag: 21613b92-5184-4dbb-af3f-65be1200c029
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	column 'Start Of Quarter' = STARTOFQUARTER('Date Table'[Order Date])
+		formatString: dd/mm/yyyy
+		lineageTag: 348a9ebc-1071-4b9e-9bbb-96c048db0264
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isDateTimeCustom":true}
+
+	hierarchy 'Start of year Hierarchy'
+		lineageTag: 771959cd-78cc-480c-8f77-3cf7c0c43231
+
+		level 'Start of year'
+			lineageTag: 0034938a-6e5f-4faa-9622-1c393ea914b6
+			column: 'Start of year'
+
+		level 'Start Of Quarter'
+			lineageTag: d9168bb3-9dea-4311-87e1-5f6a05207e7d
+			column: 'Start Of Quarter'
+
+		level 'Start of month'
+			lineageTag: 1f100a6b-7316-4c57-ab9a-2f4d64a1c9a7
+			column: 'Start of month'
+
+		level 'Order Date'
+			lineageTag: 62dad879-6629-4fa7-a11b-b626d6d39ac7
+			column: 'Order Date'
+
+	partition 'Date Table' = calculated
+		mode: import
+		source =
+				
+				Distinct(SELECTCOLUMNs(Sales,"Order Date",FORMAT(DATE(LEFT(Sales[OrderDateKey],4),MID(Sales[OrderDateKey],5,2),RIGHT(Sales[OrderDateKey],2)),"yyyy-mm-dd")))
+
+	annotation PBI_Id = 08e6349b8ceb4bd092ef37ab301fbcaa
+

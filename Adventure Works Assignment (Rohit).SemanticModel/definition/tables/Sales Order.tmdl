@@ -1,0 +1,71 @@
+table 'Sales Order'
+	lineageTag: 84e859a3-aafa-425b-baa8-d6ac507eb107
+
+	column SalesOrderLineKey
+		dataType: int64
+		isHidden
+		isKey
+		formatString: 0
+		lineageTag: 55b07ba2-0077-41d2-bc52-8f13e66d0c18
+		summarizeBy: none
+		sourceColumn: SalesOrderLineKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales Order'
+		dataType: string
+		lineageTag: b8cea0f9-38b9-4f8b-8339-08f3c00d5b17
+		summarizeBy: none
+		sourceColumn: Sales Order
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales Order Line'
+		dataType: string
+		lineageTag: 9cc6db67-67f6-4c5f-835b-e107dabaeb5c
+		isDefaultLabel
+		summarizeBy: none
+		sourceColumn: Sales Order Line
+		sortByColumn: SalesOrderLineKey
+
+		annotation SummarizationSetBy = Automatic
+
+	column Channel
+		dataType: string
+		lineageTag: 76e9a620-16c4-469c-b973-73467dc34353
+		summarizeBy: none
+		sourceColumn: Channel
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'Sales Orders'
+		lineageTag: 5f978a8e-a5ce-44b8-8787-c43198aeb882
+
+		level 'Sales Order'
+			lineageTag: bd259d74-1e99-4f9f-b33c-f6480a6db19d
+			column: 'Sales Order'
+
+		level 'Sales Order Line'
+			lineageTag: 33e41e96-6eab-4294-945a-c85fbdf925c1
+			column: 'Sales Order Line'
+
+	partition 'Sales Order-3ce1b467-3e1b-4732-b605-3e94fee75991' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(SqlServerInstance, SqlServerDatabase),
+				    dbo_vFactSales = Source{[Schema="dbo",Item="vFactSales"]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(dbo_vFactSales,{"Channel", "SalesOrderLineKey", "SalesOrderNumber", "SalesOrderLineNumber"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Other Columns",{{"SalesOrderNumber", "Sales Order"}}),
+				    #"Added Custom" = Table.AddColumn(#"Renamed Columns", "Sales Order Line", each [Sales Order] & " - " & Text.PadStart(Number.ToText([SalesOrderLineNumber]), 2, "0")),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Added Custom",{{"Sales Order Line", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"SalesOrderLineNumber"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

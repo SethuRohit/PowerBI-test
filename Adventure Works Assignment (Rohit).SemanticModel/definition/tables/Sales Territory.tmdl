@@ -1,0 +1,77 @@
+table 'Sales Territory'
+	lineageTag: 08b9ea86-60b4-410e-b97c-5306139a3c4e
+
+	column SalesTerritoryKey
+		dataType: int64
+		isHidden
+		isKey
+		formatString: 0
+		lineageTag: efa54baf-5c0f-4a64-aace-4c35cf3942d0
+		summarizeBy: none
+		sourceColumn: SalesTerritoryKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Region
+		dataType: string
+		lineageTag: 5d3c8889-7a9a-4bcc-ade3-c5e39e88f35a
+		isDefaultLabel
+		summarizeBy: none
+		sourceColumn: Region
+
+		annotation SummarizationSetBy = Automatic
+
+	column Country
+		dataType: string
+		lineageTag: d0379cad-286f-4fae-a154-8da3f2dcd339
+		summarizeBy: none
+		sourceColumn: Country
+
+		annotation SummarizationSetBy = Automatic
+
+	column Group
+		dataType: string
+		lineageTag: 7b8fd64e-c07e-4156-9445-de79583120b3
+		summarizeBy: none
+		sourceColumn: Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Country Short' = SWITCH('Sales Territory'[Country],"United States","US","United Kingdom","UK",'Sales Territory'[Country])
+		lineageTag: 6cff73e7-3b56-4127-b323-3da6bfc78db0
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'Sales Territories'
+		lineageTag: 5df8e712-d3e5-4c36-a1ec-57577b079757
+
+		level Group
+			lineageTag: c7c932a2-2960-4bd4-91a5-4444eccb7ded
+			column: Group
+
+		level Country
+			lineageTag: 37103414-aa37-482e-a01e-d9ed09eab143
+			column: Country
+
+		level Region
+			lineageTag: b1533ac6-529a-42de-8286-d8187cde66ae
+			column: Region
+
+	partition 'Sales Territory-86e24776-e692-45a5-9e92-91af2c36c1a6' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(SqlServerInstance, SqlServerDatabase),
+				    dbo_DimSalesTerritory = Source{[Schema="dbo",Item="DimSalesTerritory"]}[Data],
+				    #"Removed Other Columns" = Table.SelectColumns(dbo_DimSalesTerritory,{"SalesTerritoryKey", "SalesTerritoryRegion", "SalesTerritoryCountry", "SalesTerritoryGroup"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Other Columns",{{"SalesTerritoryRegion", "Region"}, {"SalesTerritoryCountry", "Country"}, {"SalesTerritoryGroup", "Group"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

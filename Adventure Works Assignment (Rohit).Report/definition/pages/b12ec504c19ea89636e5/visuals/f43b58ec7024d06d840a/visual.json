@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
+  "name": "f43b58ec7024d06d840a",
+  "position": {
+    "x": 19.909604685732397,
+    "y": 562.71627003179458,
+    "z": 10000,
+    "height": 124.44444444444444,
+    "width": 210,
+    "tabOrder": 9000
+  },
+  "visualGroup": {
+    "displayName": "Total_Production_Cost",
+    "groupMode": "ScaleMode"
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
+  "name": "6060e60f52eebfc51cf3",
+  "position": {
+    "x": 144,
+    "y": 0,
+    "z": 1000,
+    "height": 225,
+    "width": 276,
+    "tabOrder": 1000
+  },
+  "visual": {
+    "visualType": "heatmapF244EA9EE1F34E828A80CF19B41976F8",
+    "query": {
+      "queryState": {
+        "location": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Customer"
+                    }
+                  },
+                  "Property": "State-Province"
+                }
+              },
+              "queryRef": "Customer.State-Province",
+              "nativeQueryRef": "State-Province"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "persist": [
+        {
+          "properties": {
+            "map": {
+              "expr": {
+                "Literal": {
+                  "Value": "'1728020013893[{\"latitude\":6.616432189999998,\"longitude\":-105.80284500000002,\"altitude\":0,\"altitudeReference\":-1},1]'"
+                }
+              }
+            },
+            "locations": {
+              "expr": {
+                "Literal": {
+                  "Value": "'1728023044212{\"[Not Applicable]\":{\"latitude\":36.89533234,\"longitude\":-91.58042145,\"type\":\"PopulatedPlace\",\"name\":\"Not, MO\",\"address\":\"[Not Applicable]\"},\"Alabama\":{\"latitude\":32.76642609,\"longitude\":-86.84033203,\"type\":\"AdminDivision1\",\"name\":\"Alabama\",\"address\":\"Alabama\"},\"Alberta\":{\"latitude\":55.16930771,\"longitude\":-114.51179504,\"type\":\"AdminDivision1\",\"name\":\"Alberta\",\"address\":\"Alberta\"},\"Arizona\":{\"latitude\":34.29322815,\"longitude\":-111.66459656,\"type\":\"AdminDivision1\",\"name\":\"Arizona\",\"address\":\"Arizona\"},\"Bayern\":{\"latitude\":48.94681168,\"longitude\":11.41901207,\"type\":\"AdminDivision1\",\"name\":\"Bavaria\",\"address\":\"Bayern\"},\"Brandenburg\":{\"latitude\":52.40841675,\"longitude\":12.56249237,\"type\":\"PopulatedPlace\",\"name\":\"Brandenburg, BB, Germany\",\"address\":\"Brandenburg\"},\"British Columbia\":{\"latitude\":54.5625,\"longitude\":-125.11655426,\"type\":\"AdminDivision1\",\"name\":\"British Columbia\",\"address\":\"British Columbia\"},\"California\":{\"latitude\":37.25466919,\"longitude\":-119.61727142,\"type\":\"AdminDivision1\",\"name\":\"California\",\"address\":\"California\"},\"Charente-Maritime\":{\"latitude\":45.77242279,\"longitude\":-0.650446,\"type\":\"AdminDivision2\",\"name\":\"Charente-Maritime\",\"address\":\"Charente-Maritime\"},\"England\":{\"latitude\":52.36822128,\"longitude\":-1.25610638,\"type\":\"AdminDivision1\",\"name\":\"England\",\"address\":\"England\"},\"Essonne\":{\"latitude\":48.5224762,\"longitude\":2.24337101,\"type\":\"AdminDivision2\",\"name\":\"Essonne\",\"address\":\"Essonne\"},\"Florida\":{\"latitude\":28.59551239,\"longitude\":-82.48734283,\"type\":\"AdminDivision1\",\"name\":\"Florida\",\"address\":\"Florida\"},\"Garonne (Haute)\":{\"latitude\":44.96462631,\"longitude\":-0.54156798,\"type\":\"Lake\",\"name\":\"Garonne, France\",\"address\":\"Garonne (Haute)\"},\"Georgia\":{\"latitude\":32.64828491,\"longitude\":-83.44437408,\"type\":\"AdminDivision1\",\"name\":\"Georgia\",\"address\":\"Georgia\"},\"Hamburg\":{\"latitude\":53.55725479,\"longitude\":9.99596596,\"type\":\"PopulatedPlace\",\"name\":\"Hamburg, HH, Germany\",\"address\":\"Hamburg\"},\"Hauts de Seine\":{\"latitude\":48.80195618,\"longitude\":2.24938703,\"type\":\"AdminDivision2\",\"name\":\"Hauts-de-Seine\",\"address\":\"Hauts de Seine\"},\"Hessen\":{\"latitude\":50.60310364,\"longitude\":9.03111172,\"type\":\"AdminDivision1\",\"name\":\"Hesse\",\"address\":\"Hessen\"},\"Illinois\":{\"latitude\":40.12414551,\"longitude\":-89.14863586,\"type\":\"AdminDivision1\",\"name\":\"Illinois\",\"address\":\"Illinois\"},\"Kentucky\":{\"latitude\":37.52732468,\"longitude\":-85.28770447,\"type\":\"AdminDivision1\",\"name\":\"Kentucky\",\"address\":\"Kentucky\"},\"Loir et Cher\":{\"latitude\":47.61689377,\"longitude\":1.42789602,\"type\":\"AdminDivision2\",\"name\":\"Loir-et-Cher\",\"address\":\"Loir et Cher\"},\"Loiret\":{\"latitude\":47.91181946,\"longitude\":2.34409809,\"type\":\"AdminDivision2\",\"name\":\"Loiret\",\"address\":\"Loiret\"},\"Massachusetts\":{\"latitude\":42.17237473,\"longitude\":-71.60503387,\"type\":\"AdminDivision1\",\"name\":\"Massachusetts\",\"address\":\"Massachusetts\"},\"Minnesota\":{\"latitude\":46.34914398,\"longitude\":-94.19830322,\"type\":\"AdminDivision1\",\"name\":\"Minnesota\",\"address\":\"Minnesota\"},\"Mississippi\":{\"latitude\":32.7208786,\"longitude\":-89.65620422,\"type\":\"AdminDivision1\",\"name\":\"Mississippi\",\"address\":\"Mississippi\"},\"Missouri\":{\"latitude\":38.36758041,\"longitude\":-92.47736359,\"type\":\"AdminDivision1\",\"name\":\"Missouri\",\"address\":\"Missouri\"},\"Montana\":{\"latitude\":47.03351974,\"longitude\":-109.64512634,\"type\":\"AdminDivision1\",\"name\":\"Montana\",\"address\":\"Montana\"},\"Moselle\":{\"latitude\":49.03755569,\"longitude\":6.66134977,\"type\":\"AdminDivision2\",\"name\":\"Moselle\",\"address\":\"Moselle\"},\"New South Wales\":{\"latitude\":-32.1656189,\"longitude\":147.00819397,\"type\":\"AdminDivision1\",\"name\":\"New South Wales\",\"address\":\"New South Wales\"},\"New York\":{\"latitude\":40.71304703,\"longitude\":-74.00723267,\"type\":\"PopulatedPlace\",\"name\":\"New York, NY\",\"address\":\"New York\"},\"Nord\":{\"latitude\":50.44784164,\"longitude\":3.21500802,\"type\":\"AdminDivision2\",\"name\":\"Nord\",\"address\":\"Nord\"},\"Nordrhein-Westfalen\":{\"latitude\":51.47969055,\"longitude\":7.56231308,\"type\":\"AdminDivision1\",\"name\":\"North Rhine-Westphalia\",\"address\":\"Nordrhein-Westfalen\"},\"North Carolina\":{\"latitude\":35.53937531,\"longitude\":-79.18538666,\"type\":\"AdminDivision1\",\"name\":\"North Carolina\",\"address\":\"North Carolina\"},\"Ohio\":{\"latitude\":40.41553497,\"longitude\":-82.70935822,\"type\":\"AdminDivision1\",\"name\":\"Ohio\",\"address\":\"Ohio\"},\"Ontario\":{\"latitude\":50.07465744,\"longitude\":-85.82873535,\"type\":\"AdminDivision1\",\"name\":\"Ontario\",\"address\":\"Ontario\"},\"Oregon\":{\"latitude\":43.93868637,\"longitude\":-120.5581131,\"type\":\"AdminDivision1\",\"name\":\"Oregon\",\"address\":\"Oregon\"},\"Pas de Calais\":{\"latitude\":50.49392319,\"longitude\":2.28614807,\"type\":\"AdminDivision2\",\"name\":\"Pas-de-Calais\",\"address\":\"Pas de Calais\"},\"Queensland\":{\"latitude\":-22.56706429,\"longitude\":144.5459137,\"type\":\"AdminDivision1\",\"name\":\"Queensland\",\"address\":\"Queensland\"},\"Saarland\":{\"latitude\":49.38440704,\"longitude\":6.95322514,\"type\":\"AdminDivision1\",\"name\":\"Saarland\",\"address\":\"Saarland\"},\"Seine (Paris)\":{\"latitude\":49.43941116,\"longitude\":0.33274299,\"type\":\"Lake\",\"name\":\"Seine, France\",\"address\":\"Seine (Paris)\"},\"Seine et Marne\":{\"latitude\":48.62748718,\"longitude\":2.93411207,\"type\":\"AdminDivision2\",\"name\":\"Seine-et-Marne\",\"address\":\"Seine et Marne\"},\"Seine Saint Denis\":{\"latitude\":48.91760635,\"longitude\":2.4785409,\"type\":\"AdminDivision2\",\"name\":\"Seine-St.-Denis\",\"address\":\"Seine Saint Denis\"},\"Somme\":{\"latitude\":49.95805359,\"longitude\":2.27594995,\"type\":\"AdminDivision2\",\"name\":\"Somme\",\"address\":\"Somme\"},\"South Australia\":{\"latitude\":-30.10808372,\"longitude\":135.83181763,\"type\":\"AdminDivision1\",\"name\":\"South Australia\",\"address\":\"South Australia\"},\"South Carolina\":{\"latitude\":33.90394211,\"longitude\":-80.89408112,\"type\":\"AdminDivision1\",\"name\":\"South Carolina\",\"address\":\"South Carolina\"},\"Tasmania\":{\"latitude\":-41.93644333,\"longitude\":146.59515381,\"type\":\"AdminDivision1\",\"name\":\"Tasmania\",\"address\":\"Tasmania\"},\"Texas\":{\"latitude\":31.46384811,\"longitude\":-99.33329773,\"type\":\"AdminDivision1\",\"name\":\"Texas\",\"address\":\"Texas\"},\"Utah\":{\"latitude\":39.32377625,\"longitude\":-111.67822266,\"type\":\"AdminDivision1\",\"name\":\"Utah\",\"address\":\"Utah\"},\"Val de Marne\":{\"latitude\":48.77741241,\"longitude\":2.46932912,\"type\":\"AdminDivision2\",\"name\":\"Val-De-Marne\",\"address\":\"Val de Marne\"},\"Val d''Oise\":{\"latitude\":49.08269882,\"longitude\":2.13081408,\"type\":\"AdminDivision2\",\"name\":\"Val-d''Oise\",\"address\":\"Val d''Oise\"},\"Victoria\":{\"latitude\":48.42750168,\"longitude\":-123.36725616,\"type\":\"PopulatedPlace\",\"name\":\"Victoria, BC\",\"address\":\"Victoria\"},\"Virginia\":{\"latitude\":37.51290894,\"longitude\":-78.69778442,\"type\":\"AdminDivision1\",\"name\":\"Virginia\",\"address\":\"Virginia\"},\"Washington\":{\"latitude\":47.41135788,\"longitude\":-120.55648041,\"type\":\"AdminDivision1\",\"name\":\"Washington\",\"address\":\"Washington\"},\"Wyoming\":{\"latitude\":42.99962616,\"longitude\":-107.55144501,\"type\":\"AdminDivision1\",\"name\":\"Wyoming\",\"address\":\"Wyoming\"},\"Yveline\":{\"latitude\":48.8152771,\"longitude\":1.84125996,\"type\":\"AdminDivision2\",\"name\":\"Yvelines\",\"address\":\"Yveline\"}}'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "legend": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "mapElement": [
+        {
+          "properties": {
+            "forest": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "road": {
+              "expr": {
+                "Literal": {
+                  "Value": "'color'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

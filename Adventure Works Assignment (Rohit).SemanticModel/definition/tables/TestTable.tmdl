@@ -1,0 +1,30 @@
+table TestTable
+	lineageTag: 65e9f142-9841-4915-86af-d3566a13b61e
+
+	column Email
+		dataType: string
+		lineageTag: bdaac833-9a99-4690-9eac-e17669e50024
+		summarizeBy: none
+		sourceColumn: Email
+
+		annotation SummarizationSetBy = Automatic
+
+	column Group
+		dataType: string
+		lineageTag: fb6bac98-6781-41b8-8569-936b57f20611
+		summarizeBy: none
+		sourceColumn: Group
+
+		annotation SummarizationSetBy = Automatic
+
+	partition TestTable = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i45WKk4tySgtys/ILNFLL81LKUpNSal0KEzMK0ks1kvOz9VLLFXSUXIFqihIVYqNBQA=", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Email = _t, Group = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Email", type text}, {"Group", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

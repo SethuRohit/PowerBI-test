@@ -1,0 +1,1743 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmark/1.4.0/schema.json",
+  "displayName": "Total_revenue_product",
+  "name": "eb43ed703d5295d8469a",
+  "options": {
+    "targetVisualNames": [],
+    "suppressData": true
+  },
+  "explorationState": {
+    "version": "1.3",
+    "activeSection": "3c81c9162899b8065cfc",
+    "sections": {
+      "3c81c9162899b8065cfc": {
+        "filters": {
+          "byExpr": [
+            {
+              "name": "1f61e743ba72b36e8d76",
+              "type": "Categorical",
+              "filter": {
+                "Version": 2,
+                "From": [
+                  {
+                    "Name": "p",
+                    "Entity": "Product",
+                    "Type": 0
+                  }
+                ],
+                "Where": [
+                  {
+                    "Condition": {
+                      "In": {
+                        "Expressions": [
+                          {
+                            "Column": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Source": "p"
+                                }
+                              },
+                              "Property": "ProductKey"
+                            }
+                          }
+                        ],
+                        "Values": [
+                          [
+                            {
+                              "Literal": {
+                                "Value": "217L"
+                              }
+                            }
+                          ]
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "expression": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Product"
+                    }
+                  },
+                  "Property": "Product"
+                }
+              },
+              "howCreated": 5
+            }
+          ]
+        },
+        "visualContainers": {
+          "27466303ffc91631c241": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "de0cac26f9d8152f69cf",
+                  "type": "TopN",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "subquery",
+                        "Expression": {
+                          "Subquery": {
+                            "Query": {
+                              "Version": 2,
+                              "From": [
+                                {
+                                  "Name": "d",
+                                  "Entity": "Date Table",
+                                  "Type": 0
+                                }
+                              ],
+                              "Select": [
+                                {
+                                  "Column": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Source": "d"
+                                      }
+                                    },
+                                    "Property": "Start of year"
+                                  },
+                                  "Name": "field"
+                                }
+                              ],
+                              "OrderBy": [
+                                {
+                                  "Direction": 2,
+                                  "Expression": {
+                                    "Aggregation": {
+                                      "Expression": {
+                                        "Column": {
+                                          "Expression": {
+                                            "SourceRef": {
+                                              "Source": "d"
+                                            }
+                                          },
+                                          "Property": "Start of year"
+                                        }
+                                      },
+                                      "Function": 4
+                                    }
+                                  }
+                                }
+                              ],
+                              "Top": 1
+                            }
+                          }
+                        },
+                        "Type": 2
+                      },
+                      {
+                        "Name": "d",
+                        "Entity": "Date Table",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "In": {
+                            "Expressions": [
+                              {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "d"
+                                    }
+                                  },
+                                  "Property": "Start of year"
+                                }
+                              }
+                            ],
+                            "Table": {
+                              "SourceRef": {
+                                "Source": "subquery"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Date Table"
+                        }
+                      },
+                      "Property": "Start of year"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "4b7776b2a44cc6ab62c5",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "*Measure table"
+                        }
+                      },
+                      "Property": "Latest Year With Data"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "e14a9d308249d3e353ea",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "*Measure table"
+                        }
+                      },
+                      "Property": "Total_Revenue"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "c71629a29e0637dc51d7",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "*Measure table"
+                        }
+                      },
+                      "Property": "Target_Revenue"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "gauge",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "*Measure table"
+                        }
+                      },
+                      "Property": "Total_Revenue"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "31780714c4b5df18f1a0": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "de0cac26f9d8152f69cf",
+                  "type": "TopN",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "subquery",
+                        "Expression": {
+                          "Subquery": {
+                            "Query": {
+                              "Version": 2,
+                              "From": [
+                                {
+                                  "Name": "d",
+                                  "Entity": "Date Table",
+                                  "Type": 0
+                                }
+                              ],
+                              "Select": [
+                                {
+                                  "Column": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Source": "d"
+                                      }
+                                    },
+                                    "Property": "Start of year"
+                                  },
+                                  "Name": "field"
+                                }
+                              ],
+                              "OrderBy": [
+                                {
+                                  "Direction": 2,
+                                  "Expression": {
+                                    "Aggregation": {
+                                      "Expression": {
+                                        "Column": {
+                                          "Expression": {
+                                            "SourceRef": {
+                                              "Source": "d"
+                                            }
+                                          },
+                                          "Property": "Start of year"
+                                        }
+                                      },
+                                      "Function": 4
+                                    }
+                                  }
+                                }
+                              ],
+                              "Top": 1
+                            }
+                          }
+                        },
+                        "Type": 2
+                      },
+                      {
+                        "Name": "d",
+                        "Entity": "Date Table",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "In": {
+                            "Expressions": [
+                              {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "d"
+                                    }
+                                  },
+                                  "Property": "Start of year"
+                                }
+                              }
+                            ],
+                            "Table": {
+                              "SourceRef": {
+                                "Source": "subquery"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Date Table"
+                        }
+                      },
+                      "Property": "Start of year"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "5f67bcbaccb369715020",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "*Measure table"
+                        }
+                      },
+                      "Property": "Total_Profit"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "1a75d789c5c5a2c74390",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "*Measure table"
+                        }
+                      },
+                      "Property": "Target_Profit"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "gauge",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "*Measure table"
+                        }
+                      },
+                      "Property": "Total_Profit"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "90b8373389caa7326b5e": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "de0cac26f9d8152f69cf",
+                  "type": "TopN",
+                  "filter": {
+                    "Version": 2,
+                    "From": [
+                      {
+                        "Name": "subquery",
+                        "Expression": {
+                          "Subquery": {
+                            "Query": {
+                              "Version": 2,
+                              "From": [
+                                {
+                                  "Name": "d",
+                                  "Entity": "Date Table",
+                                  "Type": 0
+                                }
+                              ],
+                              "Select": [
+                                {
+                                  "Column": {
+                                    "Expression": {
+                                      "SourceRef": {
+                                        "Source": "d"
+                                      }
+                                    },
+                                    "Property": "Start of year"
+                                  },
+                                  "Name": "field"
+                                }
+                              ],
+                              "OrderBy": [
+                                {
+                                  "Direction": 2,
+                                  "Expression": {
+                                    "Aggregation": {
+                                      "Expression": {
+                                        "Column": {
+                                          "Expression": {
+                                            "SourceRef": {
+                                              "Source": "d"
+                                            }
+                                          },
+                                          "Property": "Start of year"
+                                        }
+                                      },
+                                      "Function": 4
+                                    }
+                                  }
+                                }
+                              ],
+                              "Top": 1
+                            }
+                          }
+                        },
+                        "Type": 2
+                      },
+                      {
+                        "Name": "d",
+                        "Entity": "Date Table",
+                        "Type": 0
+                      }
+                    ],
+                    "Where": [
+                      {
+                        "Condition": {
+                          "In": {
+                            "Expressions": [
+                              {
+                                "Column": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Source": "d"
+                                    }
+                                  },
+                                  "Property": "Start of year"
+                                }
+                              }
+                            ],
+                            "Table": {
+                              "SourceRef": {
+                                "Source": "subquery"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Date Table"
+                        }
+                      },
+                      "Property": "Start of year"
+                    }
+                  },
+                  "howCreated": 1
+                },
+                {
+                  "name": "a2ac8492905c2a0b0dc2",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "*Measure table"
+                        }
+                      },
+                      "Property": "Total_Orders"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "5b38a9697c05ca7b19a3",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "*Measure table"
+                        }
+                      },
+                      "Property": "Target_Order"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "gauge",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 2,
+                  "Expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "*Measure table"
+                        }
+                      },
+                      "Property": "Total_Orders"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "d2e8fa791af027f1f5c5": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "fffcbde76e6ed2c03aa3",
+                  "type": "Advanced",
+                  "expression": {
+                    "Aggregation": {
+                      "Expression": {
+                        "Column": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Product"
+                            }
+                          },
+                          "Property": "Product"
+                        }
+                      },
+                      "Function": 3
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "card",
+              "objects": {}
+            }
+          },
+          "d5a0a19c518922ab2b25": {
+            "singleVisual": {
+              "visualType": "textbox",
+              "objects": {}
+            }
+          },
+          "1d117720f2fabb7bfea5": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "e2625cf5070096459d0b",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Date Table"
+                            }
+                          },
+                          "Hierarchy": "Start of year Hierarchy"
+                        }
+                      },
+                      "Level": "Start of year"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "6c878910b56d1516a802",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Date Table"
+                            }
+                          },
+                          "Hierarchy": "Start of year Hierarchy"
+                        }
+                      },
+                      "Level": "Start Of Quarter"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "93591613a7230050b588",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Date Table"
+                            }
+                          },
+                          "Hierarchy": "Start of year Hierarchy"
+                        }
+                      },
+                      "Level": "Start of month"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "8c979cd3909d71ba12e6",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Date Table"
+                            }
+                          },
+                          "Hierarchy": "Start of year Hierarchy"
+                        }
+                      },
+                      "Level": "Order Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "6b54e9f4dd4270dec31e",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "*Measure table"
+                        }
+                      },
+                      "Property": "Total_Revenue"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "areaChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Date Table"
+                            }
+                          },
+                          "Hierarchy": "Start of year Hierarchy"
+                        }
+                      },
+                      "Level": "Start of year"
+                    }
+                  }
+                },
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Date Table"
+                            }
+                          },
+                          "Hierarchy": "Start of year Hierarchy"
+                        }
+                      },
+                      "Level": "Start Of Quarter"
+                    }
+                  }
+                },
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Date Table"
+                            }
+                          },
+                          "Hierarchy": "Start of year Hierarchy"
+                        }
+                      },
+                      "Level": "Start of month"
+                    }
+                  }
+                },
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Date Table"
+                            }
+                          },
+                          "Hierarchy": "Start of year Hierarchy"
+                        }
+                      },
+                      "Level": "Order Date"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Date Table"
+                            }
+                          },
+                          "Hierarchy": "Start of year Hierarchy"
+                        }
+                      },
+                      "Level": "Start of year"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "179c4b7b1a1755cf2d3a": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "3741b213106d38ea0800",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Date Table"
+                            }
+                          },
+                          "Hierarchy": "Start of year Hierarchy"
+                        }
+                      },
+                      "Level": "Start of year"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "c44565689ebb078b17d4",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Date Table"
+                            }
+                          },
+                          "Hierarchy": "Start of year Hierarchy"
+                        }
+                      },
+                      "Level": "Start Of Quarter"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "7af8776a7250b045c809",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Date Table"
+                            }
+                          },
+                          "Hierarchy": "Start of year Hierarchy"
+                        }
+                      },
+                      "Level": "Start of month"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "f2d71dd622b5b9ac11a4",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Date Table"
+                            }
+                          },
+                          "Hierarchy": "Start of year Hierarchy"
+                        }
+                      },
+                      "Level": "Order Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "88b351eb20bd608aa520",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "*Measure table"
+                        }
+                      },
+                      "Property": "Total_Profit"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "areaChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Date Table"
+                            }
+                          },
+                          "Hierarchy": "Start of year Hierarchy"
+                        }
+                      },
+                      "Level": "Start of year"
+                    }
+                  }
+                },
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Date Table"
+                            }
+                          },
+                          "Hierarchy": "Start of year Hierarchy"
+                        }
+                      },
+                      "Level": "Start Of Quarter"
+                    }
+                  }
+                },
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Date Table"
+                            }
+                          },
+                          "Hierarchy": "Start of year Hierarchy"
+                        }
+                      },
+                      "Level": "Start of month"
+                    }
+                  }
+                },
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Date Table"
+                            }
+                          },
+                          "Hierarchy": "Start of year Hierarchy"
+                        }
+                      },
+                      "Level": "Order Date"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Date Table"
+                            }
+                          },
+                          "Hierarchy": "Start of year Hierarchy"
+                        }
+                      },
+                      "Level": "Start of year"
+                    }
+                  }
+                ]
+              },
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "ad2d95c5d9b87ccb3f0c": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "8c6d02060c9b8d493db1",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Date Table"
+                            }
+                          },
+                          "Hierarchy": "Start of year Hierarchy"
+                        }
+                      },
+                      "Level": "Start of year"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "e98b3dc330070320d7b7",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Date Table"
+                            }
+                          },
+                          "Hierarchy": "Start of year Hierarchy"
+                        }
+                      },
+                      "Level": "Start Of Quarter"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "eab2df4b893267a853aa",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Date Table"
+                            }
+                          },
+                          "Hierarchy": "Start of year Hierarchy"
+                        }
+                      },
+                      "Level": "Start of month"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "7f7d3af65c9e186043b8",
+                  "type": "Categorical",
+                  "expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Date Table"
+                            }
+                          },
+                          "Hierarchy": "Start of year Hierarchy"
+                        }
+                      },
+                      "Level": "Order Date"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "8e442433ce9deb411098",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "*Measure table"
+                        }
+                      },
+                      "Property": "Total_Orders"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "lineChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Date Table"
+                            }
+                          },
+                          "Hierarchy": "Start of year Hierarchy"
+                        }
+                      },
+                      "Level": "Start of year"
+                    }
+                  }
+                },
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Date Table"
+                            }
+                          },
+                          "Hierarchy": "Start of year Hierarchy"
+                        }
+                      },
+                      "Level": "Start Of Quarter"
+                    }
+                  }
+                },
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Date Table"
+                            }
+                          },
+                          "Hierarchy": "Start of year Hierarchy"
+                        }
+                      },
+                      "Level": "Start of month"
+                    }
+                  }
+                },
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Date Table"
+                            }
+                          },
+                          "Hierarchy": "Start of year Hierarchy"
+                        }
+                      },
+                      "Level": "Order Date"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "HierarchyLevel": {
+                      "Expression": {
+                        "Hierarchy": {
+                          "Expression": {
+                            "SourceRef": {
+                              "Entity": "Date Table"
+                            }
+                          },
+                          "Hierarchy": "Start of year Hierarchy"
+                        }
+                      },
+                      "Level": "Start of year"
+                    }
+                  }
+                ]
+              },
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "e6817dfa1b8dbaac074e": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "09274e4a2795ccc0eb7a",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Date Table"
+                        }
+                      },
+                      "Property": "Start of year"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "8c6977135d9385444378",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Sales Territory"
+                        }
+                      },
+                      "Property": "Country Short"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "0649c68adc5406c805c8",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "*Measure table"
+                        }
+                      },
+                      "Property": "Total_Revenue"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "columnChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Sales Territory"
+                        }
+                      },
+                      "Property": "Country Short"
+                    }
+                  }
+                },
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Date Table"
+                        }
+                      },
+                      "Property": "Start of year"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Sales Territory"
+                        }
+                      },
+                      "Property": "Country Short"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Date Table"
+                        }
+                      },
+                      "Property": "Start of year"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "cd671fafcce6f213ff06": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "31f87534d08133128d66",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Date Table"
+                        }
+                      },
+                      "Property": "Start of year"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "53d09c55b30bce45da7e",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "*Measure table"
+                        }
+                      },
+                      "Property": "Total_Orders"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "dd4128104e8c80508812",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Sales Territory"
+                        }
+                      },
+                      "Property": "Country Short"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "columnChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Product"
+                        }
+                      },
+                      "Property": "Product"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Date Table"
+                        }
+                      },
+                      "Property": "Start of year"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Sales Territory"
+                        }
+                      },
+                      "Property": "Country Short"
+                    }
+                  }
+                ]
+              },
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "3ad069e97dd5cd9e323c": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "f916a54f5e6d44013c9e",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Date Table"
+                        }
+                      },
+                      "Property": "Start of year"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "a9febdfb54060d688820",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Sales Territory"
+                        }
+                      },
+                      "Property": "Country Short"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "86e09f2108bb32db3b9c",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "*Measure table"
+                        }
+                      },
+                      "Property": "Total_Profit"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "columnChart",
+              "objects": {},
+              "orderBy": [
+                {
+                  "Direction": 1,
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Product"
+                        }
+                      },
+                      "Property": "Product"
+                    }
+                  }
+                }
+              ],
+              "activeProjections": {
+                "Category": [
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Date Table"
+                        }
+                      },
+                      "Property": "Start of year"
+                    }
+                  },
+                  {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Sales Territory"
+                        }
+                      },
+                      "Property": "Country Short"
+                    }
+                  }
+                ]
+              },
+              "display": {
+                "mode": "hidden"
+              }
+            }
+          },
+          "3156be65555db9a690f1": {
+            "singleVisual": {
+              "visualType": "image",
+              "objects": {}
+            }
+          },
+          "04101918e71a94067481": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "c9d779142a3c804e0304": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "e897cf1d79e2b8f63c73": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "117ad0820a41aa802053": {
+            "singleVisual": {
+              "visualType": "actionButton",
+              "objects": {}
+            }
+          },
+          "2124d6e9fbe5a8a7fb4a": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "c9d9f06b6e2874c889ed",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Date Table"
+                        }
+                      },
+                      "Property": "Start of year"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "dda5985c4c8895e0d1a0",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "*Measure table"
+                        }
+                      },
+                      "Property": "Total_Revenue"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "c4eaf6e0b3c4940713e6",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "*Measure table"
+                        }
+                      },
+                      "Property": "Previous_Year_Revenue"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "kpi",
+              "objects": {}
+            }
+          },
+          "8917b8e4b470d9a50324": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "785b2b21d3503cec3275",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "*Measure table"
+                        }
+                      },
+                      "Property": "Total_Orders"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "b0e94eb408ca33093b52",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "*Measure table"
+                        }
+                      },
+                      "Property": "Previous_Year_Order"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "69047a822037bbe7ba60",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Date Table"
+                        }
+                      },
+                      "Property": "Start of year"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "kpi",
+              "objects": {}
+            }
+          },
+          "84c5ed5b360e221c84ed": {
+            "filters": {
+              "byExpr": [
+                {
+                  "name": "6fd88843ddaab916675c",
+                  "type": "Categorical",
+                  "expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Date Table"
+                        }
+                      },
+                      "Property": "Start of year"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "fe605b3d0078542524e8",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "*Measure table"
+                        }
+                      },
+                      "Property": "Total_Profit"
+                    }
+                  },
+                  "howCreated": 0
+                },
+                {
+                  "name": "104bd430670a43a2522b",
+                  "type": "Advanced",
+                  "expression": {
+                    "Measure": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "*Measure table"
+                        }
+                      },
+                      "Property": "Previous_Year_Profit"
+                    }
+                  },
+                  "howCreated": 0
+                }
+              ]
+            },
+            "singleVisual": {
+              "visualType": "kpi",
+              "objects": {}
+            }
+          },
+          "a9c715b650a8e3536afc": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "6bf03cf9aa00bc07e762": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "df9a70b274fc0f5f88f6": {
+            "singleVisual": {
+              "visualType": "shape",
+              "objects": {}
+            }
+          },
+          "93bd62e00b29f290deff": {
+            "singleVisual": {
+              "visualType": "pageNavigator",
+              "objects": {}
+            }
+          }
+        }
+      }
+    },
+    "objects": {
+      "merge": {
+        "outspacePane": [
+          {
+            "properties": {
+              "expanded": {
+                "expr": {
+                  "Literal": {
+                    "Value": "false"
+                  }
+                }
+              },
+              "visible": {
+                "expr": {
+                  "Literal": {
+                    "Value": "true"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

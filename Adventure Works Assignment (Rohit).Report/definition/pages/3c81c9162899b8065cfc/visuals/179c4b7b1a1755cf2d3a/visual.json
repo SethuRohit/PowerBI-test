@@ -1,0 +1,333 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.1.0/schema.json",
+  "name": "179c4b7b1a1755cf2d3a",
+  "position": {
+    "x": 766,
+    "y": 113,
+    "z": 4000,
+    "height": 285,
+    "width": 488,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "areaChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Date Table"
+                        }
+                      },
+                      "Hierarchy": "Start of year Hierarchy"
+                    }
+                  },
+                  "Level": "Start of year"
+                }
+              },
+              "queryRef": "Date Table.Start of year Hierarchy.Start of year",
+              "nativeQueryRef": "Start of year Hierarchy Start of year",
+              "active": true
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Date Table"
+                        }
+                      },
+                      "Hierarchy": "Start of year Hierarchy"
+                    }
+                  },
+                  "Level": "Start Of Quarter"
+                }
+              },
+              "queryRef": "Date Table.Start of year Hierarchy.Start Of Quarter",
+              "nativeQueryRef": "Start of year Hierarchy Start Of Quarter",
+              "active": false
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Date Table"
+                        }
+                      },
+                      "Hierarchy": "Start of year Hierarchy"
+                    }
+                  },
+                  "Level": "Start of month"
+                }
+              },
+              "queryRef": "Date Table.Start of year Hierarchy.Start of month",
+              "nativeQueryRef": "Start of year Hierarchy Start of month",
+              "active": false
+            },
+            {
+              "field": {
+                "HierarchyLevel": {
+                  "Expression": {
+                    "Hierarchy": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Date Table"
+                        }
+                      },
+                      "Hierarchy": "Start of year Hierarchy"
+                    }
+                  },
+                  "Level": "Order Date"
+                }
+              },
+              "queryRef": "Date Table.Start of year Hierarchy.Order Date",
+              "nativeQueryRef": "Start of year Hierarchy Order Date",
+              "active": false
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "*Measure table"
+                    }
+                  },
+                  "Property": "Total_Profit"
+                }
+              },
+              "queryRef": "*Measure table.Total_Profit",
+              "nativeQueryRef": "Total_Profit"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "HierarchyLevel": {
+                "Expression": {
+                  "Hierarchy": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Date Table"
+                      }
+                    },
+                    "Hierarchy": "Start of year Hierarchy"
+                  }
+                },
+                "Level": "Start of year"
+              }
+            },
+            "direction": "Ascending"
+          },
+          {
+            "field": {
+              "HierarchyLevel": {
+                "Expression": {
+                  "Hierarchy": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Date Table"
+                      }
+                    },
+                    "Hierarchy": "Start of year Hierarchy"
+                  }
+                },
+                "Level": "Start Of Quarter"
+              }
+            },
+            "direction": "Ascending"
+          },
+          {
+            "field": {
+              "HierarchyLevel": {
+                "Expression": {
+                  "Hierarchy": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Date Table"
+                      }
+                    },
+                    "Hierarchy": "Start of year Hierarchy"
+                  }
+                },
+                "Level": "Start of month"
+              }
+            },
+            "direction": "Ascending"
+          },
+          {
+            "field": {
+              "HierarchyLevel": {
+                "Expression": {
+                  "Hierarchy": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Date Table"
+                      }
+                    },
+                    "Hierarchy": "Start of year Hierarchy"
+                  }
+                },
+                "Level": "Order Date"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "categoryAxis": [
+        {
+          "properties": {
+            "showAxisTitle": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dataPoint": [
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": 0.2
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "*Measure table.Total_Profit"
+          }
+        }
+      ],
+      "lineStyles": [
+        {
+          "properties": {
+            "areaShow": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Total Profit by Year'"
+                }
+              }
+            },
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#D9E9EB'"
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "50D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#D9E9EB'"
+                    }
+                  }
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "30D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "isHidden": true
+}

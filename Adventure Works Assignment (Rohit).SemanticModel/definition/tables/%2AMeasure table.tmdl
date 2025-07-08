@@ -1,0 +1,162 @@
+table '*Measure table'
+	lineageTag: 5b37417c-8d82-4dfb-afb1-f6109a74bfa9
+
+	measure Total_Customers = DISTINCTCOUNT(Customer[CustomerKey])
+		formatString: 0
+		lineageTag: d907ace8-cec3-4d73-8a53-6da96a9fa817
+
+	measure Order_Target_Gap = [Total_Orders] - [Previous_Year_Order]
+		formatString: 0
+		lineageTag: f6af009f-6be1-4bb1-b661-6b422c5efcdb
+
+	measure Previous_Year_Order = CALCULATE([Total_Orders],PREVIOUSYEAR('Date Table'[Order Date]))
+		formatString: 0
+		lineageTag: 7986b6b2-c55d-497c-8c9b-d2d01b5201a2
+
+	measure Previous_Year_Revenue = CALCULATE([Total_Revenue],PREVIOUSYEAR('Date Table'[Order Date]))
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		lineageTag: d8b45192-b589-430c-a225-1229a8d0b429
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	measure Target_Revenue = [Previous_Year_Revenue] * 1.1
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		lineageTag: f1f8d2c7-17cb-429c-87f8-bd53c3fdd704
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	measure Total_Orders = DISTINCTCOUNT('Sales Order'[Sales Order])
+		formatString: 0
+		lineageTag: f7293bf0-f2c1-464e-bea9-c6be78cfac48
+
+	measure Total_Product_Cost = SUM(Sales[Total Product Cost])
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		lineageTag: a7077b47-abe3-4d21-8211-594bd48e1397
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	measure Total_Profit = [Total_Revenue] - [Total_Product_Cost]
+		formatString: "₹"\ #,0;#,0\ -"₹";"₹"\ #,0
+		lineageTag: b8596b95-abc6-4772-9531-5b238c4f1ae4
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	measure Total_Revenue = SUMX(Sales, Sales[Order Quantity] * Sales[Discounted Unit Price])
+		formatString: "₹"\ #,0;#,0\ -"₹";"₹"\ #,0
+		lineageTag: bd8bb6ab-21f7-4036-ae80-c254eadb6750
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	measure 'Total_Revenue (Customer Details)' = IF(HASONEVALUE(Customer[CustomerKey]),[Total_Revenue])
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		lineageTag: 98cc6458-6cbd-4ef0-a1d6-b96040ad9639
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	measure Target_Order = [Previous_Year_Order] * 1.1
+		lineageTag: 59d8fb01-5950-4c81-aac8-a2b2ea9251d0
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Previous_Year_Profit = CALCULATE([Total_Profit],PREVIOUSYEAR('Date Table'[Order Date]))
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		lineageTag: 88748d78-3cec-4cdf-9a9a-db00bb8bb92c
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	measure Target_Profit = [Previous_Year_Profit] * 1.1
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		lineageTag: 1e618c1f-d89d-40d5-991d-dfc75deae58d
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	measure Revenue_Per_Customer = DIVIDE([Total_Revenue],[Total_Customers],0)
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		lineageTag: 3f628bc3-b04e-425a-b3a0-a469eaf07a84
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	measure Revenue_Target_Gap = [Total_Revenue] - [Target_Revenue]
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		lineageTag: 5139e878-ef59-4370-9226-f5298d969b92
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	measure Previous_Month_Order = CALCULATE([Total_Orders],PREVIOUSMONTH('Date Table'[Order Date]))
+		formatString: 0
+		lineageTag: c870a681-cb9c-456e-9cfc-350fd6f9b1c1
+
+	measure 'Average Order Value' = DIVIDE([Total_Revenue],[Total_Orders])
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		lineageTag: aa4e3d9d-b8ac-4a94-bb9a-5bdccc889cc5
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	measure 'Total Sales' = SUM(Sales[Sales Amount (Including Quantity)])
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		lineageTag: 04c68e6a-2793-4ef7-af21-77c59db292a8
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	measure 'Years in Tooltip' = DISTINCT(VALUES('Date Table'[Year]))
+		formatString: 0
+		lineageTag: 95fce2de-0358-4e4d-b05b-dfea70736363
+
+	measure Profit_Target_Gap = [Total_Profit] - [Previous_Year_Profit]
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		lineageTag: 026bc1f7-f136-414e-bd70-c9de989f06ec
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	measure Total_Orders_Gauge = CALCULATE(DISTINCTCOUNT('Sales Order'[Sales Order]),FILTER('Sales',Sales[ProductKey] = SELECTEDVALUE('Product'[ProductKey])))
+		formatString: 0
+		lineageTag: af92775a-d623-4fa1-89a0-b4b5fc4fdc2f
+
+	measure Total_Customer_Spend = SUMX(VALUES(Sales[CustomerKey]),CALCULATE(SUM(Sales[Sales Amount (Including Quantity)])))
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		lineageTag: 3b6896d8-051c-43d7-9352-88092da422ab
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	measure Customer_Spend_Category = SWITCH(TRUE(),[Total_Customer_Spend] > 10000, "VIP",[Total_Customer_Spend] > 5000, "High Spender",[Total_Customer_Spend] > 2000, "Medium Spender","Low Spender")
+		lineageTag: ec801348-a9ed-4322-b2a5-9b77e2897171
+
+	measure 'Selected Year Donut Chart' = "Total Orders by Country for "&SELECTEDVALUE('Date Table'[Year],"All Years")
+		lineageTag: b45451e1-ff64-4f1e-b4f8-039022edc4a6
+
+	measure 'Selected Year Table' = "Customer Total Revenue by Rank for "&SELECTEDVALUE('Date Table'[Year],"All Years")
+		lineageTag: 3944b8e9-62ce-48e8-ae54-1ed843751675
+
+	measure 'Latest Year With Data' = MAXX(FILTER(sales,Sales[ProductKey] = SELECTEDVALUE('Product'[ProductKey])),Sales[Start Of Year])
+		formatString: General Date
+		lineageTag: 6021f24f-c48c-414b-b03f-3aed27a7d61c
+
+	measure 'Selected Year Filter' = "Year "&SELECTEDVALUE('Date Table'[Year],"All Years")
+		lineageTag: 174a7098-8f4e-4570-b7e4-f33268d5570f
+
+	measure 'Prodution Cost' = SUM(Sales[Product Standard Cost])
+		formatString: "₹"\ #,0.###############;#,0.###############\ -"₹";"₹"\ #,0.###############
+		lineageTag: 386b0246-2d7b-4848-9cd0-b2a8ce74dd33
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-IN"}
+
+	measure 'Top 10 customers' = IF(MAX(Customer[Customer_rank]) <=10,MAX(Customer[Customer]),blank())
+		lineageTag: 47be8a2b-755f-4db6-bd1c-0d575d006187
+
+	measure Top10Customers =
+			
+			IF([CustomerRank] <= 10,Customer[CustomerName],BLANK())
+		lineageTag: 318d845e-9e33-440e-b2b4-22b4d75326a7
+
+	partition '*Measure table' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

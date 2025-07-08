@@ -1,0 +1,130 @@
+table Product
+	lineageTag: 1f14cb57-1c88-4ede-826b-f0d9c1c74485
+
+	column ProductKey
+		dataType: int64
+		isKey
+		formatString: 0
+		lineageTag: bd4f7819-e310-4183-987d-e449d0c92951
+		summarizeBy: none
+		sourceColumn: ProductKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column Product
+		dataType: string
+		lineageTag: f377c272-ddf2-42bf-b795-2ea9af89d8a1
+		isDefaultLabel
+		summarizeBy: none
+		sourceColumn: Product
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Standard Cost'
+		dataType: decimal
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: b4edc54d-848e-48c0-b4cd-cfc9f74c562e
+		summarizeBy: none
+		sourceColumn: Standard Cost
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column Color
+		dataType: string
+		lineageTag: a769718a-1b72-4a9d-a606-0dcb08fd551b
+		summarizeBy: none
+		sourceColumn: Color
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'List Price'
+		dataType: decimal
+		formatString: \$#,0.00;(\$#,0.00);\$#,0.00
+		lineageTag: 06733537-6663-4093-aa26-61975a6140ec
+		summarizeBy: none
+		sourceColumn: List Price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	column Model
+		dataType: string
+		lineageTag: 0fd65383-b682-4645-89eb-1dd652811bfb
+		summarizeBy: none
+		sourceColumn: Model
+
+		annotation SummarizationSetBy = Automatic
+
+	column Subcategory
+		dataType: string
+		lineageTag: 63a26d6f-6b82-473b-83f4-b65e13bff740
+		summarizeBy: none
+		sourceColumn: Subcategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: 0da719df-76ae-4be5-b747-8739d2427f8a
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	/// Stock-keeping unit
+	column SKU
+		dataType: string
+		lineageTag: 55b566be-cf61-4b10-96c0-6cc09219064e
+		summarizeBy: none
+		sourceColumn: SKU
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'SKU Short' = LEFT('Product'[SKU],2)
+		lineageTag: 2ed50d81-e7c3-4072-9c4b-26561f3fee5a
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy Products
+		lineageTag: 66336fb8-0be4-4a63-b311-6057049d8cc9
+
+		level Category
+			lineageTag: 458e7995-d84b-4a50-b230-4770b1cc7ae4
+			column: Category
+
+		level Subcategory
+			lineageTag: 7b5e322b-7c40-4e0d-91ca-110b4bf2fd98
+			column: Subcategory
+
+		level Model
+			lineageTag: 0e737e4d-a967-4926-92d6-7c703c38059b
+			column: Model
+
+		level Product
+			lineageTag: c6a11c6e-1ca1-4afb-b2a7-16c0e7c6d18b
+			column: Product
+
+	partition Product-3d5e98b2-a997-4444-96bb-fe1718e2f2b8 = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database(SqlServerInstance, SqlServerDatabase),
+				    dbo_DimProduct = Source{[Schema="dbo",Item="DimProduct"]}[Data],
+				    #"Filtered Rows" = Table.SelectRows(dbo_DimProduct, each ([FinishedGoodsFlag] = true)),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Filtered Rows",{"ProductKey", "ProductAlternateKey", "EnglishProductName", "StandardCost", "Color", "ListPrice", "ModelName", "DimProductSubcategory"}),
+				    #"Expanded DimProductSubcategory" = Table.ExpandRecordColumn(#"Removed Other Columns", "DimProductSubcategory", {"EnglishProductSubcategoryName", "DimProductCategory"}, {"EnglishProductSubcategoryName", "DimProductCategory"}),
+				    #"Expanded DimProductCategory" = Table.ExpandRecordColumn(#"Expanded DimProductSubcategory", "DimProductCategory", {"EnglishProductCategoryName"}, {"EnglishProductCategoryName"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Expanded DimProductCategory",{{"EnglishProductName", "Product"}, {"StandardCost", "Standard Cost"}, {"ListPrice", "List Price"}, {"ModelName", "Model"}, {"EnglishProductSubcategoryName", "Subcategory"}, {"EnglishProductCategoryName", "Category"}, {"ProductAlternateKey", "SKU"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,49 @@
+table 'Product Metric Parameter'
+	lineageTag: d32caec2-e5cd-4485-97e3-97f30a3a8588
+
+	column 'Product Metric Parameter'
+		lineageTag: 1fcc1ec8-cedd-493f-be14-45a2bc0543ed
+		summarizeBy: none
+		sourceColumn: [Value1]
+		sortByColumn: 'Product Metric Parameter Order'
+
+		relatedColumnDetails
+			groupByColumn: 'Product Metric Parameter Fields'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Metric Parameter Fields'
+		isHidden
+		lineageTag: ce75e3e0-7201-4c8d-887a-c1b19e64a442
+		summarizeBy: none
+		sourceColumn: [Value2]
+		sortByColumn: 'Product Metric Parameter Order'
+
+		extendedProperty ParameterMetadata =
+				{
+				  "version": 3,
+				  "kind": 2
+				}
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Product Metric Parameter Order'
+		isHidden
+		formatString: 0
+		lineageTag: 69b2ce72-a23d-4ade-ba46-4206330569ab
+		summarizeBy: sum
+		sourceColumn: [Value3]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Product Metric Parameter' = calculated
+		mode: import
+		source =
+				{
+				    ("Total_Orders", NAMEOF('*Measure table'[Total_Orders]), 0),
+				    ("Total_Revenue", NAMEOF('*Measure table'[Total_Revenue]), 1),
+				    ("Total_Profit", NAMEOF('*Measure table'[Total_Profit]), 2)
+				}
+
+	annotation PBI_Id = 37e27fe7382e4f3797dfe5d9249145cb
+

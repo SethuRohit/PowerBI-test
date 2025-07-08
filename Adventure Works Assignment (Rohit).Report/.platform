@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Adventure Works Assignment (Rohit)"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "1e81091a-39c5-4075-b3d7-f915f0cf714b"
+  }
+}

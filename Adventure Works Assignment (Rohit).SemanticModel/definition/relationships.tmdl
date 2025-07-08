@@ -1,0 +1,35 @@
+relationship a2e2132d-9db0-cac7-8425-cf290e551f72
+	fromColumn: Sales.CustomerKey
+	toColumn: Customer.CustomerKey
+
+relationship 545acb0d-9c12-460f-e80e-2faae86179f6
+	fromColumn: Sales.ProductKey
+	toColumn: Product.ProductKey
+
+relationship 05dbad78-a98f-85c8-1fa5-dd3ad157cbe7
+	fromColumn: Sales.ResellerKey
+	toColumn: Reseller.ResellerKey
+
+relationship 23981652-99ac-5117-7961-d15f3c556148
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'Sales Order'.SalesOrderLineKey
+	toColumn: Sales.SalesOrderLineKey
+
+relationship 69c78dfe-d487-50a2-2b2a-c9f024311b25
+	fromColumn: Sales.SalesTerritoryKey
+	toColumn: 'Sales Territory'.SalesTerritoryKey
+
+relationship 52d1b0f8-4f4d-55c5-7f6e-c79e1ac0a8a4
+	fromColumn: Sales.'Order Date'
+	toColumn: 'Date Table'.'Order Date'
+
+relationship 9b9c1b1e-a610-6355-f13e-97e6095600be
+	isActive: false
+	fromColumn: Sales.OrderDateKey
+	toColumn: 'Date Table'.Date_in_text
+
+relationship 5dc76902-2e43-762f-6206-985398440cfb
+	fromColumn: 'Sales Territory'.Group
+	toColumn: TestTable.Group
+

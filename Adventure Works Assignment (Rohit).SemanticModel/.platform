@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Adventure Works Assignment (Rohit)"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "9a76a2e0-c231-4f85-98ad-60ba9415cf9d"
+  }
+}
